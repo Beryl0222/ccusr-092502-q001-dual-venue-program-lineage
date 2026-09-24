@@ -1,0 +1,27 @@
+{
+  "service": "dual-venue-program-lineage",
+  "entities": [
+    "program",
+    "performance_slot",
+    "rights_grant",
+    "channel_release"
+  ],
+  "events": [
+    "PROGRAM_PROPOSED",
+    "SLOT_CONFIRMED",
+    "RIGHTS_CLEARED",
+    "RELEASE_PUBLISHED",
+    "CHANGE_RECONCILED"
+  ],
+  "envelope": {
+    "required": [
+      "event_id",
+      "event_type",
+      "occurred_at",
+      "aggregate_id",
+      "version",
+      "payload"
+    ],
+    "version_minimum": 1
+  }
+}

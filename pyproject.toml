@@ -1,0 +1,6 @@
+[project]
+name = "dual-venue-program-lineage"
+version = "0.1.0"
+description = "双场域演出版本衔接的领域事件边界"
+requires-python = ">=3.11"
+dependencies = []
