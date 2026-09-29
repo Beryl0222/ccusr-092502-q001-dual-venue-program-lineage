@@ -4,14 +4,30 @@
     "program",
     "performance_slot",
     "rights_grant",
-    "channel_release"
+    "contract",
+    "tech_review",
+    "channel_release",
+    "billing",
+    "venue"
   ],
   "events": [
+    "VENUE_REGISTERED",
     "PROGRAM_PROPOSED",
-    "SLOT_CONFIRMED",
+    "PROGRAM_REVISED",
+    "PROGRAM_CANCELLED",
+    "CONTRACT_SCOPED",
+    "TECH_REVIEWED",
     "RIGHTS_CLEARED",
+    "RIGHTS_NARROWED",
+    "SLOT_HELD",
+    "SLOT_CONFIRMED",
+    "SLOT_RESCHEDULED",
+    "SLOT_RELEASED",
     "RELEASE_PUBLISHED",
-    "CHANGE_RECONCILED"
+    "RELEASE_RECEIPTED",
+    "RELEASE_RETRACTED",
+    "BILLING_SETTLED",
+    "BILLING_REFUNDED"
   ],
   "envelope": {
     "required": [
@@ -22,6 +38,17 @@
       "version",
       "payload"
     ],
+    "optional": [
+      "causation_id",
+      "correlation_id"
+    ],
     "version_minimum": 1
+  },
+  "streams": {
+    "venues": "所有场地登记共用一条流",
+    "program-<program_id>": "节目版本链：提案、改版、合同、技术、版权均在此流",
+    "slot-<slot_id>": "单场次流：预留、确认、改期、释放",
+    "release-<program_id>-<channel>": "单渠道发布流：再发布为新版本事件",
+    "billing-bill-<slot_id>": "单场次结算流"
   }
 }
