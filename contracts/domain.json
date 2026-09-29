@@ -4,14 +4,35 @@
     "program",
     "performance_slot",
     "rights_grant",
-    "channel_release"
+    "artist_contract",
+    "tech_review",
+    "channel_release",
+    "venue",
+    "execution",
+    "settlement"
   ],
   "events": [
     "PROGRAM_PROPOSED",
+    "PROGRAM_REVISED",
+    "VENUE_REGISTERED",
+    "RESTRICTION_DECLARED",
+    "SLOT_REQUESTED",
     "SLOT_CONFIRMED",
+    "SLOT_RESCHEDULED",
+    "SLOT_PERFORMER_REPLACED",
+    "SLOT_CANCELLED",
     "RIGHTS_CLEARED",
+    "RIGHTS_NARROWED",
+    "CONTRACT_SCOPED",
+    "TECH_REVIEW_SUBMITTED",
+    "TECH_REVIEW_APPROVED",
+    "TECH_REVIEW_REJECTED",
     "RELEASE_PUBLISHED",
-    "CHANGE_RECONCILED"
+    "RELEASE_SUPERSEDED",
+    "CHANNEL_RECEIPT_ACKED",
+    "CHANGE_RECONCILED",
+    "PERFORMANCE_EXECUTED",
+    "SETTLEMENT_RECORDED"
   ],
   "envelope": {
     "required": [
@@ -22,6 +43,10 @@
       "version",
       "payload"
     ],
-    "version_minimum": 1
+    "optional": [
+      "idempotency_key"
+    ],
+    "version_minimum": 1,
+    "immutability": "事件一经追加不得原地改写；更正与改期只能以新版本事件表达"
   }
 }

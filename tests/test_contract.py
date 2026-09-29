@@ -5,6 +5,7 @@ import json
 import unittest
 from pathlib import Path
 
+from src.domain import EVENT_TYPES
 from src.envelope import validate_event
 
 
@@ -26,6 +27,13 @@ class EventContractTest(unittest.TestCase):
     def test_timezone_is_required(self) -> None:
         changed = dict(self.sample, occurred_at="2026-09-24T09:00:00")
         self.assertIn("occurred_at 必须包含时区", validate_event(changed, set(self.contract["events"])))
+
+    def test_code_event_set_matches_contract(self) -> None:
+        # 服务代码实际使用的事件集合必须与对外合同严格一致，防止两边漂移
+        self.assertEqual(EVENT_TYPES, set(self.contract["events"]))
+
+    def test_sample_event_type_still_registered(self) -> None:
+        self.assertIn(self.sample["event_type"], EVENT_TYPES)
 
 
 if __name__ == "__main__":
